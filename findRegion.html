@@ -1,0 +1,45 @@
+<html>
+<head>
+  <title>Amazon Chime SDK - Nearest Media Region</title>
+  <script>
+
+async function getNearestMediaRegion(partition)  {
+
+    console.log('Nearest media region partition: ' + partition);
+
+    const url = ('aws-us-gov' == partition) ? 'https://nearest-us-gov-media-region.l.chime.aws' : 'https://nearest-media-region.l.chime.aws';
+    let result = ('aws-us-gov' == partition) ? 'us-gov-west-1' : 'us-west-2';
+
+    try { //Find the nearest media region
+        console.log('Nearest media region URL: ' + url);
+        const response = await fetch(url, {method: 'GET'} );
+        const body = await response.json();
+        result = body.region;
+    } catch (error) {
+        console.log(error.message);
+    } finally {
+        console.log('Nearest media region found: ' + result);
+        return result;
+    }
+}
+
+async function findRegions(partition) {
+  aws.innerText = await getNearestMediaRegion();
+  awsusgov.innerText = await getNearestMediaRegion('aws-us-gov');
+}
+  </script>
+</head>
+<>
+  <h3>Nearest media region, by AWS partition</h3>
+  <table>
+    <tr><th>Partition</th><th></th><th></th><th>Media Region</th></tr>
+    <tr><td>aws commercial</td><th></th><th></th><td id="aws">Finding...</td></tr>
+    <tr><td>aws-us-gov cloud</td><th></th><th></th><td id="awsusgov">Finding...</td></tr>
+  </table>
+  <script>
+    findRegions();
+  </script>
+  <p></p>
+  
+</body>
+</html>

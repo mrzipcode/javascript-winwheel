@@ -1,0 +1,200 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Zip Spinning Wheel</title>
+              <link rel="stylesheet" href="main.css" type="text/css" />
+        <script type="text/javascript" src="../../Winwheel.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script> 
+        <script type="text/javascript" src="randomNames.js"></script>
+         <script type="text/javascript" src="randomNameList.js"></script>
+        <meta charset="UTF-8" />
+<!-- font-awesome library to make the
+	webpage more appealing -->
+<link rel="stylesheet" href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<!-- Internal CSS styling -->
+<style>
+	.content {
+	text-align: center;
+	padding: 30px;
+	margin: 0px auto;
+	}
+
+	.details {
+	margin-left: auto;
+	margin-right: auto;
+	}
+
+	img {
+	border-radius: 5px;
+	box-shadow: black;
+	}
+
+	table,
+	td {
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	padding: 10px;
+	border: 1px solid black;
+	}
+</style> 
+    </head>
+    <body>
+        <h1>This is a test page</h1>
+        <canvas id='canvas' width='880' height='300'>
+            Canvas not supported, use another browser.
+        </canvas>
+     <script>
+        let theWheel = new Winwheel({
+    'canvasId'    : 'canvas',
+        'numSegments' : 10,
+        'fillStyle'   : 'yellow',
+        'lineWidth'   : 3,
+        'pins'  :0,
+         'segments'    :
+        [
+            {'fillStyle' : '#eae56f', 'text' :'Seggy 1'},
+            {'fillStyle' : '#89f26e', 'text' : 'Segment 2'},
+            {'fillStyle' : '#7de6ef', 'text' : 'Segment 3'},
+            {'fillStyle' : '#e7706f', 'text' : 'Segment 4'},
+              {'fillStyle' : '#eae56f', 'text' : 'Segment 5'},
+            {'fillStyle' : '#89f26e', 'text' : 'Segment 6'},
+            {'fillStyle' : '#7de6ef', 'text' : 'Segment 7'},
+            {'fillStyle' : '#e7706f', 'text' : 'Segment 8'},
+              {'fillStyle' : '#eae56f', 'text' : 'Segment 9'},
+            {'fillStyle' : '#89f26e', 'text' : 'Segment 10'}
+        ]
+    });
+
+   /* function addSegment()
+    {
+        // Use a date object to set the text of each added segment to the current minutes:seconds
+        // (just to give each new segment a different label).
+        let date = new Date();
+ 
+        // The Second parameter in the call to addSegment specifies the position,
+        // in this case 1 meaning the new segment goes at the start of the wheel.
+        theWheel.addSegment({
+            'text' : date.getMinutes() + ':' + date.getSeconds(),
+            'fillStyle' : 'aqua'
+        }, 1);
+ 
+        // The draw method of the wheel object must be called in order for the changes
+        // to be rendered.
+        theWheel.draw();
+    }
+    */
+ 
+function addSegment()
+    {
+        // Use a date object to set the text of each added segment to the current minutes:seconds
+        // (just to give each new segment a different label).
+        let date = new Date();
+ 
+        // The Second parameter in the call to addSegment specifies the position,
+        // in this case 1 meaning the new segment goes at the start of the wheel.
+        theWheel.addSegment({
+            'text' : id="email",
+            'fillStyle' : 'pink'
+        }, 1);
+ 
+        // The draw method of the wheel object must be called in order for the changes
+        // to be rendered.
+        theWheel.draw();
+    }
+
+    function deleteSegment()
+    {
+        // Call function to remove a segment from the wheel, by default the last one will be
+        // removed; you can pass in the number of the segment to delete if desired.
+        theWheel.deleteSegment();
+ 
+        // The draw method of the wheel object must be called to render the changes.
+        theWheel.draw();
+    };
+     function changeColours()
+    {
+        // Change colours as desired by accessing the segment via the segments array
+        // of the wheel object (note first array position is 1 not 0).
+        let temp = theWheel.segments[1].fillStyle;
+        theWheel.segments[1].fillStyle = theWheel.segments[2].fillStyle;
+        theWheel.segments[2].fillStyle = theWheel.segments[3].fillStyle;
+        theWheel.segments[3].fillStyle = theWheel.segments[4].fillStyle;
+        theWheel.segments[4].fillStyle = theWheel.segments[5].fillStyle;
+        theWheel.segments[5].fillStyle = theWheel.segments[6].fillStyle;
+        theWheel.segments[6].fillStyle = theWheel.segments[7].fillStyle;
+        theWheel.segments[7].fillStyle = theWheel.segments[8].fillStyle;
+        theWheel.segments[8].fillStyle = theWheel.segments[9].fillStyle;
+        theWheel.segments[9].fillStyle = theWheel.segments[10].fillStyle;
+        theWheel.segments[10].fillStyle = temp;
+ 
+        // The draw method of the wheel object must be called
+        // in order for the changes to be rendered.
+        theWheel.draw();
+    }
+</script>
+ 
+<button onClick="changeColours();">Change Colours</button>
+<button onClick="addSegment();">Add Segment</button>
+<button onClick="deleteSegment();">Delete Segment</button>
+</script>
+<p></p>
+<div class="content">
+	<div class="head">
+	<h1 id="head"></h1>
+	</div>
+	<div class="email">
+	<i class="fa fa-envelope" style=
+		"font-size: 15px; color: blue;"></i>
+	<a href="" id="email"> </a>
+	</div>
+	<div class="phone">
+	<i class="fa fa-phone" style=
+		"font-size: 15px; color: blue;"></i>
+	<a href="" id="phone"> </a>
+	</div>
+    <div class="uuid"></div>
+    <i class="fa fa-user-secret" style=
+		"font-size: 15px; color: blue;"></i>
+	 <a href="" id="uuid"> </a>
+	<br />
+	<div id="user-img"></div>
+	<br />
+
+	<div class="details">
+	<table>
+		<tr>
+		<td>User Password</td>
+		<td><span id="password"></span></td>
+		</tr><tr>
+		<td>User SSN</td>
+		<td><span id="ssn"></span></td>
+		</tr>
+        <tr>
+		<td>Age</td>
+		<td><span id="age"></span></td>
+		</tr>
+		<tr>
+		<td>Gender</td>
+		<td><span id="gender"></span></td>
+		</tr>
+		<tr>
+		<td>Location</td>
+		<td><span id="location"></span></td>
+		</tr>
+		<tr>
+		<td>Country</td>
+		<td><span id="country"></span></td>
+		</tr>
+	</table>
+	</div>
+</div>
+
+
+
+
+    </body>
+</html>

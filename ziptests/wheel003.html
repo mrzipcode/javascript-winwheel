@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Zip Spinning Wheel 003</title>
+              <link rel="stylesheet" href="main.css" type="text/css" />
+        <script type="text/javascript" src="../../Winwheel.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script> 
+        <script type="text/javascript" src="randomNames.js"></script>
+         <script type="text/javascript" src="randomNameList.js"></script>
+        <meta charset="UTF-8" />
+<!-- font-awesome library to make the
+	webpage more appealing -->
+<link rel="stylesheet" href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<!-- Internal CSS styling -->
+<style>
+	.content {
+	text-align: center;
+	padding: 30px;
+	margin: 0px auto;
+	}
+
+	.details {
+	margin-left: auto;
+	margin-right: auto;
+	}
+
+	img {
+	border-radius: 5px;
+	box-shadow: black;
+	}
+
+	table,
+	td {
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	padding: 10px;
+	border: 1px solid black;
+	}
+</style> 
+    </head>
+    <body>
+        <h1>This is the spinning wheel 02 test page</h1>
+  <canvas id="canvas" width="880" height="440"
+    data-responsiveMinWidth="180"
+    data-responsiveScaleHeight="true"   /* Optional Parameters */
+    data-responsiveMargin="50"
+    onClick="startSpin();">
+</canvas>
+<script>
+    // The responisve parameter is the only difference needed to make a wheel responsive.
+    let theWheel = new Winwheel({
+        'numSegments'  : 8,
+        'textFontSize' : 28,
+        'responsive'   : true,  // This wheel is responsive!
+        'segments'     :
+        [
+            {'fillStyle' : '#eae56f', 'text' : 'Prize 1'},
+            {'fillStyle' : '#89f26e', 'text' : 'Prize 2'},
+            {'fillStyle' : '#7de6ef', 'text' : 'Prize 3'},
+            {'fillStyle' : '#e7706f', 'text' : 'Prize 4'},
+            {'fillStyle' : '#eae56f', 'text' : 'Prize 5'},
+            {'fillStyle' : '#89f26e', 'text' : 'Prize 6'},
+            {'fillStyle' : '#7de6ef', 'text' : 'Prize 7'},
+            {'fillStyle' : '#e7706f', 'text' : 'Prize 8'}
+        ],
+        'pins' :
+        {
+            'outerRadius': 6,
+            'responsive' : true, // This must be set to true if pin size is to be responsive.
+        },
+        'animation' :
+        {
+            'type'     : 'spinToStop',
+            'duration' : 5,
+            'spins'    : 8,
+        }
+    });
+ 
+    // Called by the onClick of the canvas, starts the spinning.
+    function startSpin()
+    {
+        // Stop any current animation.
+        theWheel.stopAnimation(false);
+ 
+        // Reset the rotation angle to less than or equal to 360 so spinning again works as expected.
+        // Setting to modulus (%) 360 keeps the current position.
+        theWheel.rotationAngle = theWheel.rotationAngle % 360;
+ 
+        // Start animation.
+        theWheel.startAnimation();
+    }
+</script>
+
+<a href="http://dougtesting.net/winwheel/docs">The docs are here</a>
+
+
+    </body>
+</html>
